@@ -25,3 +25,7 @@ Rxvt*background: black
 *color13: #AD7FA8
 *color14: #fcaf3e
 *color15: #EEEEEC
+
+Rxvt.perl-ext-common: default,matcher
+Rxvt.url-launcher: /usr/bin/xdg-open
+Rxvt.matcher.button: 1
