@@ -34,16 +34,16 @@ set $right h
 floating_modifier Mod1
 
 # start a terminal
-bindsym Mod1+semicolon exec rxvt-unicode
+bindsym Mod1+semicolon exec urxvt
 
 # kill focused window
 bindsym Mod1+Shift+q kill
 
 # lock screen
-bindsym $mod+Shift+O exec i3lock -c 000000 && xset dpms force off
+bindsym Control+Shift+L exec i3lock -c 000000 && xset dpms force off
 
 # start dmenu (a program launcher)
-bindsym Mod1+d exec dmenu_run
+bindsym Mod1+space exec dmenu_run
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -91,9 +91,6 @@ bindsym Mod1+e layout toggle split
 
 # toggle tiling / floating
 bindsym Mod1+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
 
 # focus the parent container
 bindsym Mod1+a focus parent

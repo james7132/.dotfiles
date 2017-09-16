@@ -29,9 +29,6 @@ plugins=(git virtualenv)
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# Reuse Vim ZSH completions for vim completions
-compdef _vim es
-
 # User configuration
 
 export PATH="/bin:/usr/bin:/usr/local/bin:${PATH}"
@@ -65,4 +62,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # For versioning my config files.
 # See: https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-alias config='/usr/bin/git --git-dir=/usr/local/google/home/jamessliu/.cfg/ --work-tree=/usr/local/google/home/jamessliu'
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
