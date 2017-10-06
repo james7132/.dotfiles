@@ -29,7 +29,7 @@ Plug 'airblade/vim-gitgutter' " show git changes in gutter
 Plug 'Xuyuanp/nerdtree-git-plugin' " shows git changes in NERDTree
 Plug 'itchyny/lightline.vim'
 Plug 'elixir-editors/vim-elixir'
-'wellle/targets.vim'
+Plug 'wellle/targets.vim'
 
 " Google Plugins - Since I got too used to them while working at Google
 " Add maktaba and codefmt to the runtimepath.
@@ -156,7 +156,7 @@ nn <C-l> <C-w>l
 nn <C-j> <C-w>j
 nn <C-k> <C-w>k
 
-" SImplified Tab Operations
+" Simplified Tab Operations
 nn <C-Tab> gt
 nn <C-S-Tab> gT
 
@@ -169,6 +169,8 @@ nn vv ^vg_
 
 " tab to match
 nn <tab> %
+
+nn <leader>pp "+p
 
 " Center on search results
 nn n nzzzv
@@ -183,6 +185,9 @@ nn g# g#zzzv
 " -----------------------------------------------------------------------------
 " Let K be the opposite of J: split lines instead of joining them
 nn K i<CR><Esc>
+
+" Fast replace the word under the cursor
+nn <leader>rr :%s/\<C-r><C-w>\>/
 
 " -----------------------------------------------------------------------------
 " Plugin Mappings

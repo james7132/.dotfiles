@@ -27,6 +27,9 @@ Rxvt*background: black
 *color14: #fcaf3e
 *color15: #EEEEEC
 
-Rxvt.perl-ext-common: default,matcher
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+
+Rxvt.perl-ext-common: default,matcher,clipboard
 Rxvt.url-launcher: /usr/bin/xdg-open
 Rxvt.matcher.button: 1
