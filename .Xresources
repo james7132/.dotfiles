@@ -33,6 +33,6 @@ URxvt.matcher.button: 2
 
 URxvt.keysym.C-S-c: perl:clipboard:copy
 Rxvt.keysym.C-S-v: perl:clipboard:paste
-!URxvt.keysym.C-S-v: perl:clipboard:paste_escaped
+URxvt.keysym.C-S-v: perl:clipboard:paste_escaped
 
 Rxvt.iso14755: false
