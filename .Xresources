@@ -4,8 +4,8 @@ URxvt*loginShell:  true
 URxvt.font: xft:DejaVu Sans Mono:size=10
 URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=10
 
-URxvt*scrollBar:        false
-URxvt*scrollBar_right:        true
+URxvt*scrollBar: false
+URxvt*scrollBar_right: true
 
 Rxvt*foreground: white
 Rxvt*background: black
@@ -27,6 +27,12 @@ Rxvt*background: black
 *color14: #fcaf3e
 *color15: #EEEEEC
 
-Rxvt.perl-ext-common: default,matcher
-Rxvt.url-launcher: /usr/bin/xdg-open
-Rxvt.matcher.button: 1
+URxvt.perl-ext-common: default,matcher,clipboard,selection-to-clipboard
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 2
+
+URxvt.keysym.C-S-c: perl:clipboard:copy
+Rxvt.keysym.C-S-v: perl:clipboard:paste
+!URxvt.keysym.C-S-v: perl:clipboard:paste_escaped
+
+Rxvt.iso14755: false

@@ -29,7 +29,7 @@ Plug 'airblade/vim-gitgutter' " show git changes in gutter
 Plug 'Xuyuanp/nerdtree-git-plugin' " shows git changes in NERDTree
 Plug 'itchyny/lightline.vim'
 Plug 'elixir-editors/vim-elixir'
-'wellle/targets.vim'
+Plug 'wellle/targets.vim'
 
 " Google Plugins - Since I got too used to them while working at Google
 " Add maktaba and codefmt to the runtimepath.

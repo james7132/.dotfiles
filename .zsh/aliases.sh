@@ -2,9 +2,6 @@
 # General Aliases
 ##################################################################
 
-# Fast parent directory traversal
-alias ..='cd ..'
-
 # Always start tmux in 256 color mode
 alias tmux="tmux -2"
 
@@ -18,14 +15,15 @@ alias v='vim .'
 alias vd='vim ~/.dotfiles'
 alias vv='vim ~/.vimrc'
 alias vz='vim ~/.zshrc'
-alias vza='vim ~/.dotfiles/zsh/aliases.sh'
+alias vza='vim ~/.zsh/aliases.sh'
 alias vzc='vim ~/.zsh-custom'
 alias vt='vim ~/.tmux.conf'
 alias vs='sudo -E vim'
 
 # Tmux Aliases
-alias tmux='tmux -2'
-alias tmx='tmx -2'
+tmx() {
+  tmux attach -t $1 || tmux new -s $1
+}
 
 # Git Aliases
 alias gs='git status'
