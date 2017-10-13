@@ -5,7 +5,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
-ZSH_THEME="theunraveler"
+ZSH_THEME="terminalparty"
 
 # Set the default text editor to vim
 export EDITOR='vim'
@@ -63,5 +63,3 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # For versioning my config files.
 # See: https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-
-. /home/james/.asdf/asdf.sh
