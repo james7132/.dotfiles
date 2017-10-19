@@ -187,7 +187,7 @@ nn g# g#zzzv
 nn K i<CR><Esc>
 
 " Fast replace the word under the cursor
-nn <leader>rr :%s/\<C-r><C-w>\>/
+nn <leader>rr :%s/<C-r><C-w>/
 
 " -----------------------------------------------------------------------------
 " Plugin Mappings
