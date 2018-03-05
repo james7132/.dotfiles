@@ -12,24 +12,24 @@ endif
 
 call plug#begin()
 
-Plug 'SirVer/ultisnips' " snippets
-Plug 'Valloric/MatchTagAlways' " keeps alt tag/bracket highlighted
+Plug 'SirVer/ultisnips'                 " snippets
+Plug 'Valloric/MatchTagAlways'          " keeps alt tag/bracket highlighted
 Plug 'altercation/vim-colors-solarized' " color scheme
-Plug 'christoomey/vim-tmux-navigator' " tmux integration
-Plug 'honza/vim-snippets' " snippet library
-Plug 'kien/ctrlp.vim'  " fuzzy file mover
+Plug 'christoomey/vim-tmux-navigator'   " tmux integration
+Plug 'honza/vim-snippets'               " snippet library
+Plug 'ctrlpvim/ctrlp.vim'               " fuzzy file mover
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'scrooloose/nerdcommenter' " fast language-agnostic commenting
-Plug 'scrooloose/nerdtree' " file explorer
-Plug 'scrooloose/syntastic' " Syntax highlighting
-Plug 'tpope/vim-fugitive' " git integration
-Plug 'tpope/vim-sensible' " sensible defaults
-Plug 'tpope/vim-surround' " Surrounds selections
-Plug 'airblade/vim-gitgutter' " show git changes in gutter
-Plug 'Xuyuanp/nerdtree-git-plugin' " shows git changes in NERDTree
-Plug 'itchyny/lightline.vim'
-Plug 'elixir-editors/vim-elixir'
-Plug 'wellle/targets.vim'
+Plug 'scrooloose/nerdcommenter'         " fast language-agnostic commenting
+Plug 'scrooloose/nerdtree'              " file explorer
+Plug 'scrooloose/syntastic'             " Syntax highlighting
+Plug 'tpope/vim-fugitive'               " git integration
+Plug 'tpope/vim-repeat'                 " git integration
+Plug 'tpope/vim-sensible'               " sensible defaults
+Plug 'tpope/vim-surround'               " Surrounds selections
+Plug 'airblade/vim-gitgutter'           " show git changes in gutter
+Plug 'Xuyuanp/nerdtree-git-plugin'      " shows git changes in NERDTree
+Plug 'itchyny/lightline.vim'            " lightweight statusbar
+Plug 'wellle/targets.vim'               " More types of text objects
 
 " Google Plugins - Since I got too used to them while working at Google
 " Add maktaba and codefmt to the runtimepath.
