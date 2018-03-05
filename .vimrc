@@ -66,8 +66,6 @@ set visualbell               " Show errors visually instead
 set shell=/bin/bash          " Set all shell executions to run in bash
 set laststatus=2              " Always show statusline
 
-set autochdir
-
 " Save all temporary files to a defined location: ~/.vim-tmp
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -104,7 +102,7 @@ set smartindent   " Automatically add indent when adding new code blocks
 
 set linebreak     " Visually wrap lines at convinent locations
 
-set textwidth=80  " Automatically wrap lines at 80 characters
+set textwidth=81  " Automatically wrap lines at 80 characters
 
 " -----------------------------------------------------------------------------
 " Folding Settings
