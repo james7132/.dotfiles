@@ -38,12 +38,7 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 export ARCH_FLAGS="-arch x86_64"
 
-BASE_PATH=$(readlink -f ${(%):-%N})
-DIR_PATH="$(dirname $BASE_PATH)"
-#echo $DIR_PATH
-
-for file in $DIR_PATH/.zsh/*; do
-	#echo "Sourcing $file"
+for file in ~/.config/zsh/*; do
 	source "$file"
 done
 
