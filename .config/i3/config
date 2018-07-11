@@ -28,10 +28,10 @@ new_window none
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
-set $up k
+set $left h
 set $down j
-set $left l
-set $right h
+set $up k
+set $right l
 
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
