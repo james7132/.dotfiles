@@ -218,7 +218,7 @@ augroup END " }
 "autocmd BufNewFile,BufEnter * silent! lcd %:p:h
 
 " Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+"autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Load machine specific customization
 if filereadable(expand('$HOME/.vim-custom.vim'))
