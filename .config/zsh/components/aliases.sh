@@ -3,7 +3,7 @@
 ##################################################################
 
 # Always start tmux in 256 color mode
-alias tmux='tmux -2 -f $CONFIG_DIR/tmux/tmux.conf'
+alias tmux='tmux -2'
 
 # Get more verbose and accurate ls output
 alias ls='ls -lah --color --group-directories-first'
