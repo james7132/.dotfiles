@@ -25,3 +25,6 @@ alias gs='git status'
 alias gaa='git add --all'
 alias gca='git commit -a'
 
+# For versioning my config files.
+# See: https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
