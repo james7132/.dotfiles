@@ -13,7 +13,7 @@ alias sz='source ${ZDOTDIR:-HOME}/.zshrc'
 # Quick access to config files and vim.
 alias v='vim .'
 alias vv='vim $CONFIG_DIR/vim/vimrc'
-alias vz='vim ${ZDOTDIR:-HOME}/.zshrc'
+alias vz='vim ${ZDOTDIR:-HOME}'
 alias vzc='vim ${ZDOTDIR:-HOME}/.zsh-custom'
 alias vza='vim ${ZDOTDIR:-HOME}/components/aliases.sh'
 alias vt='vim ~/.tmux.conf'
@@ -26,4 +26,4 @@ alias gca='git commit -a'
 
 # For versioning my config files.
 # See: https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$CONFIG_DIR/.cfg/ --work-tree=$HOME'
