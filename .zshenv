@@ -1,6 +1,5 @@
 export CONFIG_DIR=$HOME/.config
 export ZDOTDIR=$CONFIG_DIR/zsh
-export VIMINIT="source $CONFIG_DIR/vim/vimrc"
 
 export EDITOR=`which vim`
 export VISUAL="$EDITOR"
