@@ -23,8 +23,11 @@ exec --no-startup-id ~/bin/locker &
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 5
 new_window none
+
+focus_follows_mouse yes
+mouse_warping output
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
@@ -176,3 +179,5 @@ bar {
 
 # Workspace Assignments
 assign [class="firefox"] 2
+
+exec dex -ae i3

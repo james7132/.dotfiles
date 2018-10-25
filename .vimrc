@@ -66,6 +66,8 @@ set visualbell               " Show errors visually instead
 set shell=/bin/bash          " Set all shell executions to run in bash
 set laststatus=2              " Always show statusline
 
+set shell="/bin/zsh"
+
 " Save all temporary files to a defined location: ~/.vim-tmp
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -186,6 +188,9 @@ nn K i<CR><Esc>
 
 " Fast replace the word under the cursor
 nn <leader>rr :%s/<C-r><C-w>/
+
+no <leader>x :term %:p<CR>
+no <leader>t :term<CR>
 
 " -----------------------------------------------------------------------------
 " Plugin Mappings
