@@ -1,16 +1,20 @@
 #!/bin/bash
 
-git clone --bare git@github.com:james7132/.dotfiles.git $HOME/.cfg
 function config {
-   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+   /usr/bin/git --git-dir=$CONFIG_GIT_DIR --work-tree=$HOME $@
 }
+
+REPO_URL='git@github.com:james7132/.dotfiles.git'
+CONFIG_GIT_DIR="$HOME/.config/.cfg"
+
+# Clone the repo as a bare repo
+if [ -d $CONFIG_GIT_DIR ]; then
+  rm -rf $CONFIG_GIT_DIR
+fi
+git clone --bare $REPO_URL $CONFIG_GIT_DIR
+
+# Checkout files
+config config --local status.showUntrackedFiles no
+config reset --hard
 config checkout
-if [ $? = 0 ]; then
-  echo "Checked out config.";
-  else
-    echo "Backing up pre-existing dot files.";
-    mkdir -p .config-backup
-    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
-fi;
-config checkout
-config config status.showUntrackedFiles no
+config submodule update --init --recursive
