@@ -1,16 +1,19 @@
-set nocompatible              " be ViMproved, required
+set nocompatible                        " be ViMproved, required
 " -----------------------------------------------------------------------------
 " Plugins
 " -----------------------------------------------------------------------------
 
+set runtimepath+=$CONFIG_DIR/vim
+let g:loaded_netrw=1                    " Disable netrw
+
 filetype off
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('$CONFIG_DIR/vim/autoload/plug.vim'))
+    silent !curl -fLo $CONFIG_DIR/vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+    autocmd VimEnter * PlugInstall | source $CONFIG_DIR/vim/vimrc
 endif
 
-call plug#begin()
+call plug#begin('$CONFIG_DIR/vim/plugged')
 
 Plug 'SirVer/ultisnips'                 " snippets
 Plug 'Valloric/MatchTagAlways'          " keeps alt tag/bracket highlighted
@@ -40,7 +43,7 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
 " Source custom plugin setup
-if filereadable(expand('$HOME/.vim-custom-plugins.vim'))
+if filereadable(expand('$CONFIG_DIR/.vim-custom-plugins.vim'))
   source ~/.vim-custom-plugins.vim
 endif
 
@@ -69,6 +72,9 @@ set laststatus=2              " Always show statusline
 " Save all temporary files to a defined location: ~/.vim-tmp
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Move .viminfo out of the home directory
+set viminfo+=n$CONFIG_DIR/vim/viminfo
 
 " use » to mark Tabs and ° to mark trailing whitespace. This is a
 " non-obtrusive way to mark these special characters.
@@ -127,79 +133,79 @@ Glaive codefmt plugin[mappings]
 nnoremap ; :
 " By default, it looks up man pages for the word under the cursor, which isn't
 " very useful, so we map it to something else.
-nn <s-k> <CR>
+nnoremap <s-k> <CR>
 " Save all
-nn <leader>s :wa<CR>
+nnoremap <leader>s :wa<CR>
 " Exit all
-nn <leader>q :qa!<CR>
+nnoremap <leader>q :qa!<CR>
 " Toggle quickfix window when there is something to look at
-nn <leader>c :cw<CR>
+nnoremap <leader>c :cw<CR>
 " Disable find highlighting
-nn <leader>h :noh<CR>
+nnoremap <leader>h :noh<CR>
 " Toggle paste shortcut
-nn <leader>p :set invpaste paste?<CR>
+nnoremap <leader>p :set invpaste paste?<CR>
 
 " -----------------------------------------------------------------------------
 " Navigation Mappings
 " -----------------------------------------------------------------------------
 " Disable arrow keys
-nn <down> <NOP>
-nn <up> <NOP>
-nn <left> <NOP>
-nn <right> <NOP>
+nnoremap <down> <NOP>
+nnoremap <up> <NOP>
+nnoremap <left> <NOP>
+nnoremap <right> <NOP>
 
 " Pane Navigation Simplifcation
-nn <C-h> <C-w>h
-nn <C-l> <C-w>l
-nn <C-j> <C-w>j
-nn <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 " Simplified Tab Operations
-nn <C-Tab> gt
-nn <C-S-Tab> gT
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
 
 " Use H and L to jump to beginning/end of line
-nn H ^
-nn L g_
+nnoremap H ^
+nnoremap L g_
 
 " Select line with vv
-nn vv ^vg_
+nnoremap vv ^vg_
 
 " tab to match
-nn <tab> %
+nnoremap <tab> %
 
-nn <leader>pp "+p
+nnoremap <leader>pp "+p
 
 " Center on search results
-nn n nzzzv
-nn N Nzzzv
-nn * *zzzv
-nn # #zzzv
-nn g* g*zzzv
-nn g# g#zzzv
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap g* g*zzzv
+nnoremap g# g#zzzv
 
 " -----------------------------------------------------------------------------
 " Editing Mappings
 " -----------------------------------------------------------------------------
 " Let K be the opposite of J: split lines instead of joining them
-nn K i<CR><Esc>
+nnoremap K i<CR><Esc>
 
 " Fast replace the word under the cursor
-nn <leader>rr :%s/<C-r><C-w>/
+nnoremap <leader>rr :%s/<C-r><C-w>/
 
 " -----------------------------------------------------------------------------
 " Plugin Mappings
 " -----------------------------------------------------------------------------
 " NERDTree Shortcut
-no <leader>n :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR>
 
-no <leader>e :Errors<CR>
-no <leader>fc :FormatCode<CR>
+noremap <leader>e :Errors<CR>
+noremap <leader>fc :FormatCode<CR>
 
 " Git Bindings
-no <leader>gs :Gstatus<CR>
-no <leader>gc :Gcommit<CR>
-no <leader>gd :Gvdiff<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gc :Gcommit<CR>
+noremap <leader>gd :Gvdiff<CR>
 
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
@@ -208,19 +214,10 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 " ----------------------------------------------------------------------------
 " Auto Commands
 " ----------------------------------------------------------------------------
-" Auto reload vimrc when editing it
-augroup reload_vimrc " {
-  autocmd!
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
-augroup END " }
-
-" Automatically change the working path to the path of the current file
-"autocmd BufNewFile,BufEnter * silent! lcd %:p:h
-
 " Remove any trailing whitespace that is in the file
-"autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Load machine specific customization
-if filereadable(expand('$HOME/.vim-custom.vim'))
+if filereadable(expand('$CONFIG_DIR/.vim-custom.vim'))
   source ~/.vim-custom.vim
 endif
