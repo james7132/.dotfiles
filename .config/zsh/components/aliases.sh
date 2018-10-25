@@ -12,7 +12,7 @@ alias sz='source ${ZDOTDIR:-HOME}/.zshrc'
 
 # Quick access to config files and vim.
 alias v='vim .'
-alias vv='vim $CONFIG_DIR/vim/vimrc'
+alias vv='vim $HOME/.vim/vimrc'
 alias vz='vim ${ZDOTDIR:-HOME}'
 alias vzc='vim ${ZDOTDIR:-HOME}/.zsh-custom'
 alias vza='vim ${ZDOTDIR:-HOME}/components/aliases.sh'

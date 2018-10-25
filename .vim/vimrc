@@ -3,17 +3,16 @@ set nocompatible                        " be ViMproved, required
 " Plugins
 " -----------------------------------------------------------------------------
 
-set runtimepath+=$CONFIG_DIR/vim
 let g:loaded_netrw=1                    " Disable netrw
 
 filetype off
-if empty(glob('$CONFIG_DIR/vim/autoload/plug.vim'))
-    silent !curl -fLo $CONFIG_DIR/vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $CONFIG_DIR/vim/vimrc
+    autocmd VimEnter * PlugInstall | source ~/.vim/vimrc
 endif
 
-call plug#begin('$CONFIG_DIR/vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'SirVer/ultisnips'                 " snippets
 Plug 'Valloric/MatchTagAlways'          " keeps alt tag/bracket highlighted
@@ -43,8 +42,8 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
 " Source custom plugin setup
-if filereadable(expand('$CONFIG_DIR/.vim-custom-plugins.vim'))
-  source ~/.vim-custom-plugins.vim
+if filereadable(expand('~/.vim/custom-plugins.vim'))
+  source ~/.vim/custom-plugins.vim
 endif
 
 call plug#end()              " required
@@ -76,7 +75,7 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 
 " Move .viminfo out of the home directory
-set viminfo+=n$CONFIG_DIR/vim/viminfo
+set viminfo+=n~/.vim/viminfo
 
 " use » to mark Tabs and ° to mark trailing whitespace. This is a
 " non-obtrusive way to mark these special characters.
@@ -223,6 +222,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Load machine specific customization
-if filereadable(expand('$CONFIG_DIR/.vim-custom.vim'))
-  source ~/.vim-custom.vim
+if filereadable(expand('~/.vim/custom.vim'))
+  source ~/.vim/custom.vim
 endif
