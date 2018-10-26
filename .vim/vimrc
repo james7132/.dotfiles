@@ -65,10 +65,8 @@ set t_Co=256                 " Use 256 Colors
 set term=$TERM               " Set the terminal used
 set noerrorbells             " Disable error sounds
 set visualbell               " Show errors visually instead
-set shell=/bin/bash          " Set all shell executions to run in bash
+"set shell=/bin/bash          " Set all shell executions to run in bash
 set laststatus=2              " Always show statusline
-
-set shell="/bin/zsh"
 
 " Save all temporary files to a defined location: ~/.vim-tmp
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
