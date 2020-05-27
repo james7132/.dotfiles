@@ -1,3 +1,5 @@
 [user]
-	email = james.siqi.liu@gmail.com
+	email = contact@jamessliu.com
 	name = james7132
+[push]
+	default = simple
