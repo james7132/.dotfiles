@@ -14,3 +14,5 @@ if [[ -f $CONFIG_DIR/zsh/.zsh-custom ]]; then
 else
   echo "# Custom zsh configuration goes here" > $CONFIG_DIR/zsh/.zsh-custom
 fi
+
+export GPG_TTY=$(tty)

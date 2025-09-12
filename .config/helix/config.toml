@@ -1,0 +1,10 @@
+theme = "monokai"
+
+[editor]
+line-number = "relative"
+true-color = true
+bufferline = "multiple"
+color-modes = true
+
+[keys.normal]
+";" = "command_mode"

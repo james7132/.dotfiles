@@ -1,5 +1,13 @@
 [user]
 	email = contact@jamessliu.com
 	name = james7132
+	signingkey = C946A30E8DEC5629
 [push]
 	default = simple
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
