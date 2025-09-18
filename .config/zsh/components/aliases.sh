@@ -6,9 +6,17 @@
 alias tmux='tmux -2'
 
 # Get more verbose and accurate ls output
-alias ls='ls -lah --color --group-directories-first'
+# Use eza if available
+if which eza > /dev/null; then
+  alias ls='eza -lah --color --group-directories-first'
+else
+  alias ls='ls -lah --color --group-directories-first'
+fi
 
 alias sz='source ${ZDOTDIR:-HOME}/.zshrc'
+
+# Shorten Helix
+alias hx='helix'
 
 # Quick access to config files and vim.
 alias v='vim .'
@@ -16,7 +24,7 @@ alias vv='vim $HOME/.vim/vimrc'
 alias vz='vim ${ZDOTDIR:-HOME}'
 alias vzc='vim ${ZDOTDIR:-HOME}/.zsh-custom'
 alias vza='vim ${ZDOTDIR:-HOME}/components/aliases.sh'
-alias vt='vim ~/.tmux.conf'
+alias vt='vim ~/.config/tmux/tmux.conf'
 alias vs='sudo -E vim'
 
 # Git Aliases

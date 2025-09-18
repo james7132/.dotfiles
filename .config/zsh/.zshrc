@@ -1,3 +1,4 @@
+export LANG=en_US.UTF-8
 # Source prezto
 if [[ -s "$CONFIG_DIR/zsh/prezto/init.zsh" ]]; then
   source "$CONFIG_DIR/zsh/prezto/init.zsh"
@@ -16,3 +17,8 @@ else
 fi
 
 export GPG_TTY=$(tty)
+
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd="z"
+fi

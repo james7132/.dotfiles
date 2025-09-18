@@ -1,7 +1,7 @@
 [user]
 	email = contact@jamessliu.com
 	name = james7132
-	signingkey = C946A30E8DEC5629
+	signingkey = /home/james/.ssh/id_ed25519.pub
 [push]
 	default = simple
 [commit]
@@ -11,3 +11,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[gpg]
+	format = ssh

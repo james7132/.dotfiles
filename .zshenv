@@ -1,7 +1,11 @@
 export CONFIG_DIR=$HOME/.config
 export ZDOTDIR=$CONFIG_DIR/zsh
 
-export EDITOR=`which vim`
+if command -v helix > /dev/null; then
+  export EDITOR=`which helix`
+else
+  export EDITOR=`which vim`
+fi
 export VISUAL="$EDITOR"
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
