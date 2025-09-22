@@ -27,11 +27,9 @@ alias vza='vim ${ZDOTDIR:-HOME}/components/aliases.sh'
 alias vt='vim ~/.config/tmux/tmux.conf'
 alias vs='sudo -E vim'
 
-# Git Aliases
-alias gs='git status'
-alias gaa='git add --all'
-alias gca='git commit -a'
-
 # For versioning my config files.
 # See: https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/
 alias config='/usr/bin/git --git-dir=$CONFIG_DIR/.cfg/ --work-tree=$HOME'
+
+# Shorthand for launching Japanese locale games in wine
+alias wine_jp="LANG=ja_JP.UTF-8 wine"
