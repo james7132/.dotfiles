@@ -1,7 +1,7 @@
 [user]
-	email = contact@jamessliu.com
+	email = contact@no-bull.sh
 	name = james7132
-	signingkey = /home/james/.ssh/id_ed25519.pub
+	signingkey = /home/james/.ssh/id_ed25519_nobullsh.pub
 [push]
 	default = simple
 [commit]
