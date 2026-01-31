@@ -1,0 +1,90 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 35, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 20, // Gaps between modules (4px)
+    "reload_style_on_change": true,
+    // Choose the order of the modules
+    "modules-left": [
+        "niri/workspaces",
+        "niri/window",
+    ],
+    "modules-center": [
+        "clock",
+    ],
+    "modules-right": [
+        "tray",
+        "mpd",
+        "wireplumber",
+        "network",
+    ],
+    // Modules configuration
+    "niri/window": {
+        "format": "{}",
+        "icon": true,
+        "rewrite": {
+            ".*Discord.*(#.*)": "$1",
+            "(.*) — Mullvad Browser": "$1",
+            "(.*) — Librewolf": "$1"
+        }
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 5,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "tray": {
+        "spacing": 10,
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "<bold>{:%Y-%m-%d}</bold>"
+    },
+    "network": {
+        "format-wifi": " ",
+        "format-ethernet": " ",
+        "tooltip-format": "{ifname}:{ipaddr}/{cidr} ({signalStrength})",
+        "format-linked": " ",
+        "format-disconnected": "⚠",
+    },
+    "wireplumber": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    }
+}
