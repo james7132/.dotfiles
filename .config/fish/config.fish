@@ -1,3 +1,11 @@
+if type -q ssh-agent
+  if not pgrep -u "$USER" ssh-agent > /dev/null
+    ssh-agent -c -t 1h > "$XDG_RUNTIME_DIR/ssh-agent-$USER.env"
+  end
+  if not set -q SSH_AUTH_SOCK
+    eval $(cat "$XDG_RUNTIME_DIR/ssh-agent-$USER.env") > /dev/null
+  end
+end
 
 if status is-interactive
   fish_config theme choose dracula | source
@@ -31,3 +39,8 @@ if status is-interactive
   end
 end
 
+if type -q freshfetch
+  freshfetch
+else if type -q neofetch
+  neofetch
+end
