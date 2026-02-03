@@ -1,3 +1,7 @@
+if status is-login; and not contains "$HOME/.local/bin" $PATH
+  set -gx PATH "$HOME/.local/bin:$PATH"
+end
+
 if type -q ssh-agent
   if not pgrep -u "$USER" ssh-agent > /dev/null
     ssh-agent -c -t 1h > "$XDG_RUNTIME_DIR/ssh-agent-$USER.env"
