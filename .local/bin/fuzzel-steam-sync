@@ -1,0 +1,65 @@
+#!/usr/bin/python#
+
+# Basic script to sync installed Steam games and the *.desktop files used by
+# application launchers. Relies on having played the game at least once.
+
+import os
+import re
+
+NAME_REGEX = re.compile(r"\"name\".*\"(.*)\"")
+LAST_PLAYED_REGEX = re.compile(r"\"LastPlayed\".*\"(.*)\"")
+APPID_REGEX = re.compile(r"\"appid\".*\"(.*)\"")
+
+TARGET_DIR = os.environ.get("XDG_DATA_HOME",
+                            f"/home/{os.getlogin()}/.local/share")
+TARGET_APP_DIR = os.path.join(TARGET_DIR, "applications")
+STEAM_DIR = os.path.join(TARGET_DIR, "Steam/steamapps")
+
+present = set()
+for entry in os.listdir(TARGET_APP_DIR):
+    full_path = os.path.join(TARGET_APP_DIR, entry)
+    if not os.path.isfile(full_path):
+        continue
+    if entry.startswith('userapp-steam_'):
+        present.add(full_path)
+
+for entry in os.listdir(STEAM_DIR):
+    full_path = os.path.join(STEAM_DIR, entry)
+    if not entry.startswith('appmanifest_') or not entry.endswith('.acf') or \
+            not os.path.isfile(full_path):
+        continue
+    name = None
+    is_game = False
+    appid = None
+    with open(full_path, 'r') as f:
+        for line in f:
+            line = line.strip()
+            name_match = NAME_REGEX.match(line)
+            appid_match = APPID_REGEX.match(line)
+            last_played_match = LAST_PLAYED_REGEX.match(line)
+            if name_match is not None:
+                name = name_match.group(1)
+            if appid_match is not None:
+                appid = appid_match.group(1)
+            if last_played_match is not None:
+                is_game = is_game or last_played_match.group(1) != "0"
+    target_path = os.path.join(TARGET_APP_DIR, "userapp-steam_" + appid +
+                               ".desktop")
+    if target_path in present:
+        present.remove(target_path)
+    if not is_game:
+        continue
+    with open(target_path, 'w+') as f:
+        f.write(f"""
+        [Desktop Entry]
+        Name={name}
+        Comment=Play {name} on Steam
+        Exec=steam steam://rungameid/{appid}
+        Icon=steam_icon_{appid}
+        Terminal=false
+        Type=Application
+        Categories=Game;
+        """)
+
+for remaining in present:
+    os.remove(remaining)
