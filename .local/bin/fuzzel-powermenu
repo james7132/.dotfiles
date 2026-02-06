@@ -3,18 +3,20 @@
 SELECTION="$(printf "1 - Lock\n2 - Suspend\n3 - Log out\n4 - Reboot\n5 - Reboot to UEFI\n6 - Hard reboot\n7 - Shutdown" | fuzzel --dmenu -l 7 -p "Power Menu: ")"
 
 case $SELECTION in
-	*"Lock")
+	*Lock)
 		swaylock;;
-	*"Suspend")
+	*Suspend)
 		systemctl suspend;;
-	*"Log out")
-		niri msg action quit --skip-confirmation
-	*"Reboot")
+	*'Log out')
+		niri msg action quit --skip-confirmation;;
+	*Reboot)
 		systemctl reboot;;
-	*"Reboot to UEFI")
+	*'Reboot to UEFI')
 		systemctl reboot --firmware-setup;;
-	*"Hard reboot")
+	*'Hard reboot')
 		pkexec "echo b > /proc/sysrq-trigger";;
-	*"Shutdown")
+	*Shutdown)
 		systemctl poweroff;;
 esac
+
+echo $SELECTION
