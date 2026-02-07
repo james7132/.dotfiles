@@ -1,0 +1,19 @@
+#!/bin/python
+
+import subprocess
+from subprocess import Popen, PIPE
+import json
+
+with Popen(["niri", "msg", "-j", "windows"], stdout=PIPE) as proc:
+    data = json.loads(proc.stdout.read())
+    windows = [window['title'] for window in data]
+
+windows.sort()
+with Popen(["fuzzel", "--dmenu", "--prompt=Window > ", "--width=80"], stdin=PIPE, stdout=PIPE) as proc:
+    choice, _ = proc.communicate(input=bytes('\n'.join(windows), 'utf-8'))
+    choice = choice.decode('utf-8')
+
+for window in data:
+    if choice == window["title"] + '\n':
+       Popen(["niri", "msg", "action", "focus-window", "--id", str(window["id"])])
+       break

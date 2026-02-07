@@ -204,6 +204,7 @@ spawn-at-startup "swaybg" "-i" "/home/james/Desktop/bg.jpg"
 spawn-at-startup "swayidle" "-w" \
   "timeout" "300" "swaylock -f" \
   "timeout" "600" "niri msg action power-off-mointors" \
+  "timeout" "1800" "systemctl suspend" \
   "before-sleep" "swaylock -f"
 
 hotkey-overlay {
@@ -309,6 +310,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Alt+T hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Alt+D hotkey-overlay-title="Run an Application: fuzzel" { spawn-sh "fuzzel-steam-sync && fuzzel"; }
+    Alt+S { spawn "fuzzel-niri-switch"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.03+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.03-"; }
