@@ -347,15 +347,15 @@ binds {
     Alt+Ctrl+Home { move-column-to-first; }
     Alt+Ctrl+End  { move-column-to-last; }
 
-    Alt+Shift+Left     { focus-monitor-left; }
-    Alt+Shift+Down     { focus-monitor-down; }
-    Alt+Shift+Up     { focus-monitor-up; }
-    Alt+Shift+Right     { focus-monitor-right; }
+    Alt+Left     { focus-monitor-left; }
+    Alt+Down     { focus-monitor-down; }
+    Alt+Up     { focus-monitor-up; }
+    Alt+Right     { focus-monitor-right; }
 
-    Alt+Shift+Ctrl+Left     { move-column-to-monitor-left; }
-    Alt+Shift+Ctrl+Down     { move-column-to-monitor-down; }
-    Alt+Shift+Ctrl+Up     { move-column-to-monitor-up; }
-    Alt+Shift+Ctrl+Right     { move-column-to-monitor-right; }
+    Alt+Ctrl+Left     { move-column-to-monitor-left; }
+    Alt+Ctrl+Down     { move-column-to-monitor-down; }
+    Alt+Ctrl+Up     { move-column-to-monitor-up; }
+    Alt+Ctrl+Right     { move-column-to-monitor-right; }
 
     Alt+U              { focus-window-down; }
     Alt+I              { focus-window-up; }
