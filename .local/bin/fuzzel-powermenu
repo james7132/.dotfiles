@@ -18,5 +18,3 @@ case $SELECTION in
 	*Shutdown)
 		systemctl poweroff;;
 esac
-
-echo $SELECTION
