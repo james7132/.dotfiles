@@ -259,6 +259,11 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"signal"#
+    open-on-workspace "comms"
+}
+
+window-rule {
     match app-id=r#"Thunderbird"#
     open-on-workspace "comms"
 }
