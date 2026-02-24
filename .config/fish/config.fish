@@ -48,3 +48,7 @@ if type -q freshfetch
 else if type -q neofetch
   neofetch
 end
+
+if test -e "$HOME/.config/fish/custom.fish"
+  source "$HOME/.config/fish/custom.fish"
+end
