@@ -246,11 +246,21 @@ window-rule {
 window-rule {
     match app-id=r#"Mullvad"#
     open-on-workspace "web"
+    open-floating false
+    min-width 1600
+    max-width 1600
+    min-height 900
+    max-height 900
 }
 
 window-rule {
     match app-id=r#"librewolf"#
     open-on-workspace "web"
+    open-floating false
+    min-width 1600
+    max-width 1600
+    min-height 900
+    max-height 900
 }
 
 window-rule {
