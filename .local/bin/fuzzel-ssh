@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 SELECTION=$(cat $HOME/.ssh/config | grep '^Host' | sed 's/Host //' | fuzzel --dmenu)
-foot -e --title "ssh $SELECTION" /usr/bin/ssh $SELECTION 
+foot -e --title "ssh $SELECTION" ssh $SELECTION

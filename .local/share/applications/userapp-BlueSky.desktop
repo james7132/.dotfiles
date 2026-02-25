@@ -2,6 +2,6 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Exec=/usr/bin/handlr open https://bsky.app/
+Exec=/usr/bin/env handlr open https://bsky.app/
 Name=BlueSky
 Comment=Open BlueSky homepage

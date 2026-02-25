@@ -2,6 +2,6 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-Exec=/usr/bin/handlr open https://reddit.com/
+Exec=/usr/bin/env handlr open https://reddit.com/
 Name=Reddit
 Comment=Open Reddit homepage

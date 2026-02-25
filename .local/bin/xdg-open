@@ -1,3 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-handlr open "$@"
+if ! command -v handlr >/dev/null 2>&1; then
+ handlr open "$@"
+elif [[ -e /etc/NIXOS ]]; then
+  /run/current-system/sw/bin/xdg-open "$@"
+else
+  /usr/bin/xdg-open "$@"
+fi

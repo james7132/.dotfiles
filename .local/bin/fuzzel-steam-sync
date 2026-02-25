@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # Basic script to sync installed Steam games and the *.desktop files used by
 # application launchers. Relies on having played the game at least once.
