@@ -9,12 +9,17 @@ terminal = false
 regexes = ['(https://)?(www\.)?youtu(be\.com|\.be)/*.']
 
 [[handlers]]
+exec = "tor-browser %u"
+terminal = false
+regexes = ['https://.*\.onion']
+
+[[handlers]]
 exec = "librewolf %u"
 terminal = false
 regexes = [
-  'http://*',
-  '(https://)?(www\.)?bsky.app/*.',
-  '(https://)?(www\.)?github.com/*.',
-  '(https://)?(www\.)?reddit.com/*.',
-  '(https://)?(.*\.)?spotify.com/*.',
+  'http://.*',
+  '(https://)?(www\.)?bsky.app/.*',
+  '(https://)?(www\.)?github.com/.*',
+  '(https://)?(.*\.)?reddit.com/.*',
+  '(https://)?(.*\.)?spotify.com/.*',
 ]
