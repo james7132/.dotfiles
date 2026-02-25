@@ -1,9 +1,29 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python
 
-if ! command -v handlr >/dev/null 2>&1; then
- handlr open "$@"
-elif [[ -e /etc/NIXOS ]]; then
-  /run/current-system/sw/bin/xdg-open "$@"
-else
-  /usr/bin/xdg-open "$@"
-fi
+import pathlib
+import shutil
+import subprocess
+import subprocess
+import sys
+
+REWRITES = [
+  ("https://fxtwitter.com", "https://nitter.net"),
+  ("https://stupidpenisx.com", "https://nitter.net"),
+  ("https://girlcockx.com", "https://nitter.net"),
+  ("https://x.com", "https://nitter.net"),
+  ("https://twitter.com", "https://nitter.net"),
+  ("https://fixupx.com", "https://nitter.net"),
+  ("https://fixvx.com", "https://nitter.net"),
+]
+
+args = sys.argv[1:]
+if args[0].startswith('https://'):
+  for before, after in REWRITES:
+    args[0] = args[0].replace(before, after)
+
+if shutil.which('handlr') is not None:
+  subprocess.Popen(["handlr", "open"] + args)
+elif pathlib.path('/etc/NIXOS').exists():
+  subprocess.Popen(["/run/current-system/sw/bin/xdg-open"] + args)
+else:
+  subprocess.Popen(["/usr/bin/xdg-open"] + args)
