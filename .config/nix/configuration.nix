@@ -10,7 +10,11 @@
 }:
 
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
+    };
+  };
 in
 {
   imports = [
@@ -29,10 +33,6 @@ in
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   # console = {
@@ -50,6 +50,15 @@ in
     pulse.enable = true;
   };
 
+  # Enable Syncthing
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true; # Open ports in the firewall for Syncthing, excluding the GUI ports.
+    user = "james";
+    group = "users";
+    configDir = "/home/james/.config/syncthing";
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -61,7 +70,8 @@ in
     ];
   };
 
-  nixpkgs.config. allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "steam"
       "steam-original"
@@ -78,6 +88,7 @@ in
 
     curl
     git
+    jujutsu
 
     # Niri related
     foot
@@ -109,8 +120,11 @@ in
     # Programming
     python3
     rustup
+    gcc
     just
     typst
+    mold
+    unstable.wild
     unstable.zola
 
     # Profiling
@@ -129,7 +143,7 @@ in
     # Formatters
     # taplo                     # TOML
     nixfmt # Nix
-    # rustfmt from rustup       # Rust
+    # rustfmt from rustup       # Rust  
 
     # Terminal utilities
     eza
@@ -142,6 +156,8 @@ in
     pstree
     ripgrep
     handlr-regex
+
+    xivlauncher
   ];
 
   fonts.packages = with pkgs; [
@@ -160,8 +176,10 @@ in
   ];
 
   programs.niri.enable = true;
+
   # Enable fish
   programs.fish.enable = true;
+
   programs.bash = {
     interactiveShellInit = ''
       if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
@@ -179,22 +197,43 @@ in
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
+  # Enable Protonmail Brdige
+  services.protonmail-bridge.enable = true;
+
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.swaylock = { };
+  # Use sudo-rs instead of sudo
+  security.sudo-rs.enable = true;
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # Enable zram as swap
+  zramSwap.enable = true;
+
+  # Enable automatic upgrades
+  system.autoUpgrade = {
+    enable = true;
+    flags = [
+      "--print-build-logs"
+    ];
+    dates = "weekly";
+    randomizedDelaySec = "45min";
+    allowReboot = false; # Set to true if you want automatic reboots
+  };
+
+  # Enable automatic garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
+  system.copySystemConfiguration = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
@@ -214,7 +253,4 @@ in
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.11"; # Did you read the comment?
-
-  # Enable zram as swap
-  zramSwap.enable = true;
 }
